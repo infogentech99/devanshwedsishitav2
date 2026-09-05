@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     title: "Devansh & Ishita ",
-    description: "Join as they begin their forever. 25 & 26 November, 2026",
+    description: "Join as they begin their forever. 26 November, 2026",
     url: "https://devanshandishita.invitearc.com/",
     siteName: "InviteArc",
     images: [
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Devansh & Ishita",
-    description: "Join as they begin their forever. 25 & 26 November, 2026",
+    description: "Join as they begin their forever. 26 November, 2026",
     images: ["/og.jpg"],
   },
 
