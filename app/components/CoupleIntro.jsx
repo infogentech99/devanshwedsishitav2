@@ -4,49 +4,49 @@ import RoseHeroTemp from "@/app/components/RoseHeroTemp";
 
 export default function CoupleIntro() {
   const events = [
-    {
-      title_ceremony: "Haldi",
-      image: "/assets/haldi.webp",
-      date: "Wednesday, November 25th 2026",
-      time: "at 11:30 AM",
-      food: "Followed by Lunch",
-      venue: "Bel-La Monde",
-      venue_address: (
-        <>
-          NH309, Ramnagar, Dhikuli, Garjiya, <br /> Uttarakhand 244715
-        </>
-      ),
-      link: "https://maps.app.goo.gl/HRMYY5gNt4RnpmKn6",
-    },
+    // {
+    //   title_ceremony: "Haldi",
+    //   image: "/assets/haldi.webp",
+    //   date: "Wednesday, November 25th 2026",
+    //   time: "at 11:30 AM",
+    //   food: "Followed by Lunch",
+    //   venue: "Bel-La Monde",
+    //   venue_address: (
+    //     <>
+    //       NH309, Ramnagar, Dhikuli, Garjiya, <br /> Uttarakhand 244715
+    //     </>
+    //   ),
+    //   link: "https://maps.app.goo.gl/HRMYY5gNt4RnpmKn6",
+    // },
 
-    {
-      title_ceremony: "Sagai & Ring Ceremony",
-      image: "/assets/sagai.webp",
-      date: "Wednesday, November 25th 2026",
-      time: "at 4:00 PM",
-      venue: "Bel-La Monde",
-      venue_address: (
-        <>
-          NH309, Ramnagar, Dhikuli, Garjiya, <br /> Uttarakhand 244715
-        </>
-      ),
-      link: "https://maps.app.goo.gl/HRMYY5gNt4RnpmKn6",
-    },
+    // {
+    //   title_ceremony: "Sagai & Ring Ceremony",
+    //   image: "/assets/sagai.webp",
+    //   date: "Wednesday, November 25th 2026",
+    //   time: "at 4:00 PM",
+    //   venue: "Bel-La Monde",
+    //   venue_address: (
+    //     <>
+    //       NH309, Ramnagar, Dhikuli, Garjiya, <br /> Uttarakhand 244715
+    //     </>
+    //   ),
+    //   link: "https://maps.app.goo.gl/HRMYY5gNt4RnpmKn6",
+    // },
 
-    {
-      title_ceremony: "Sangeet",
-      image: "/assets/sangeet.webp",
-      date: "Wednesday, November 25th 2026",
-      time: "at 6:00 PM",
-      food: "Followed by Dinner",
-      venue: "Bel-La Monde",
-      venue_address: (
-        <>
-          NH309, Ramnagar, Dhikuli, Garjiya, <br /> Uttarakhand 244715
-        </>
-      ),
-      link: "https://maps.app.goo.gl/HRMYY5gNt4RnpmKn6",
-    },
+    // {
+    //   title_ceremony: "Sangeet",
+    //   image: "/assets/sangeet.webp",
+    //   date: "Wednesday, November 25th 2026",
+    //   time: "at 6:00 PM",
+    //   food: "Followed by Dinner",
+    //   venue: "Bel-La Monde",
+    //   venue_address: (
+    //     <>
+    //       NH309, Ramnagar, Dhikuli, Garjiya, <br /> Uttarakhand 244715
+    //     </>
+    //   ),
+    //   link: "https://maps.app.goo.gl/HRMYY5gNt4RnpmKn6",
+    // },
 
     {
       title_ceremony: "Tika & Ghudchadi",
@@ -103,17 +103,9 @@ export default function CoupleIntro() {
         <div className="relative pt-5 md:pt-30 3xl:pt-34 pb-20 z-10">
           <h2
             className="flex flex-col items-center text-center leading-tight text-3xl md:text-5xl lg:text-7xl
-                               pb-40 md:pb-260 lg:pb-200 3xl:pb-240 text-[#834000]"
+                               pb-20 md:pb-260 lg:pb-200 3xl:pb-240 text-[#834000]"
           >
-            {/* <span className="font-playfair-display font-medium italic">
-              DEVANSH
-            </span>
-            <span className="font-playfair-display font-medium italic text-xl md:text-3xl lg:text-[38px]">
-              Weds
-            </span>
-            <span className="font-playfair-display font-medium italic">
-              ISHITA
-            </span> */}
+            
              <h2 className="font-eb-garamond font-semibold text-base md:text-xl lg:text-2xl text-center text-[#834000]">
               ॐ श्री गणेशाय नम:
             </h2>
