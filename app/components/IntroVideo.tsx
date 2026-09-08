@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 export default function IntroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
-  const [ready, setReady] = useState(false);
   const [hide, setHide] = useState(false);
   const [show, setShow] = useState(true);
 
@@ -38,10 +37,6 @@ export default function IntroVideo() {
       videoRef.current.load();
     }
   }, []);
-
-  const handleCanPlay = () => {
-    setReady(true);
-  };
 
   const playVideo = async () => {
     if (!videoRef.current || started) return;
@@ -78,7 +73,6 @@ export default function IntroVideo() {
         webkit-playsinline="true"
         muted
         preload="auto"
-        onCanPlay={handleCanPlay}
         onEnded={handleEnd}
         style={{
           position: "absolute",
@@ -93,15 +87,6 @@ export default function IntroVideo() {
       >
         <source src="/assets/hero_video.mp4" type="video/mp4" />
       </video>
-
-      {/* optional: subtle play indicator once buffered */}
-      {ready && !started && (
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-16 h-16 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center animate-pulse">
-            <div className="w-0 h-0 border-l-[16px] border-l-white border-y-[10px] border-y-transparent ml-1" />
-          </div>
-        </div>
-      )}
     </div>
   );
 }
