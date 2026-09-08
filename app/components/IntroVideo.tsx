@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 
 export default function IntroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [started, setStarted] = useState(false);
   const [ready, setReady] = useState(false);
   const [hide, setHide] = useState(false);
   const [show, setShow] = useState(true);
-  const startedRef = useRef(false);
 
   useEffect(() => {
     if (show) {
@@ -32,27 +32,26 @@ export default function IntroVideo() {
     };
   }, [show]);
 
-  const tryPlay = async () => {
-    if (!videoRef.current || startedRef.current) return;
-    startedRef.current = true;
-    try {
-      await videoRef.current.play();
-    } catch (e) {
-      // autoplay blocked, wait for tap
-      startedRef.current = false;
-      console.log(e);
-    }
-  };
-
   useEffect(() => {
-    // start loading + attempt autoplay as soon as component mounts
-    // instead of waiting for user tap -> removes the visible "lag"
-    tryPlay();
+    // silently preload video in background so click-to-play feels instant
+    if (videoRef.current) {
+      videoRef.current.load();
+    }
   }, []);
 
   const handleCanPlay = () => {
     setReady(true);
-    tryPlay();
+  };
+
+  const playVideo = async () => {
+    if (!videoRef.current || started) return;
+    try {
+      setStarted(true);
+      await videoRef.current.play();
+    } catch (e) {
+      setStarted(false);
+      console.log(e);
+    }
   };
 
   const handleEnd = () => {
@@ -66,34 +65,18 @@ export default function IntroVideo() {
 
   return (
     <div
-      onClick={tryPlay}
+      onClick={playVideo}
       className={`fixed inset-0 z-[999999] cursor-pointer transition-opacity duration-700 ${
         hide ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
       style={{ width: "100vw", height: "100%" }}
     >
-      {/* poster stays visible until video is actually ready to play */}
-      <img
-        src="/assets/hero_video.png"
-        alt=""
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          objectPosition: "center",
-          opacity: ready ? 0 : 1,
-          transition: "opacity 400ms ease",
-          pointerEvents: "none",
-        }}
-      />
       <video
         ref={videoRef}
-        muted
+        poster="/assets/hero_video.png"
         playsInline
         webkit-playsinline="true"
+        muted
         preload="auto"
         onCanPlay={handleCanPlay}
         onEnded={handleEnd}
@@ -105,13 +88,20 @@ export default function IntroVideo() {
           height: "100%",
           objectFit: "cover",
           objectPosition: "center",
-          opacity: ready ? 1 : 0,
-          transition: "opacity 400ms ease",
           pointerEvents: "none",
         }}
       >
         <source src="/assets/hero_video.mp4" type="video/mp4" />
       </video>
+
+      {/* optional: subtle play indicator once buffered */}
+      {ready && !started && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="w-16 h-16 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center animate-pulse">
+            <div className="w-0 h-0 border-l-[16px] border-l-white border-y-[10px] border-y-transparent ml-1" />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
