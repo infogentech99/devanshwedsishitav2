@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function IntroVideo() {
+export default function IntroVideo({ onFinish }: { onFinish?: () => void }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
   const [hide, setHide] = useState(false);
@@ -53,6 +53,7 @@ export default function IntroVideo() {
     setHide(true);
     setTimeout(() => {
       setShow(false);
+      onFinish?.();
     }, 700);
   };
 
